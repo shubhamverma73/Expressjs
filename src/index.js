@@ -31,7 +31,7 @@ app.get('/weather', (req, res) => {
         const jsonResponse = JSON.parse(response);
         const arrData = [jsonResponse];
         res.render('weather', {
-            bodyPart: arrData[0].name
+            bodyPart: arrData[0]
         });
     })
     /*.on('end', (err) => {

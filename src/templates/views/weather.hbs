@@ -138,8 +138,6 @@ span:after {
 	font-size: 12px;
 }
 </style>
-
-{{bodyPart}}
  
 <div class="container">
 	<div class="header">
@@ -155,13 +153,13 @@ span:after {
 		</svg>
 		</div>
 		<br/>
-		<h4 class="card-title"> <i class="fa fa-map-marker" aria-hidden="true"></i>	{{bodyPart}}, {%countryVal%}</h4>
-		<h5 class="card-title"><i class="fas fa-temperature-low"></i> {%tempVal%} <span></span>C</h5>
-		<h6 class="card-title">Feels like {%feelsLikeVal%} <span></span>C</h6>
-		<h5 class="card-title">Min {%minVal%} <span></span>C | Max {%maxVal%} <span></span>C </h5>
+		<h4 class="card-title"> <i class="fa fa-map-marker" aria-hidden="true"></i>	{{bodyPart.name}}, {{bodyPart.sys.country}}</h4>
+		<h5 class="card-title"><i class="fas fa-temperature-low"></i> {{bodyPart.main.temp}} <span></span>C</h5>
+		<h6 class="card-title">Feels like {{bodyPart.main.feels_like}} <span></span>C</h6>
+		<h5 class="card-title">Min {{bodyPart.main.temp_min}} <span></span>C | Max {{bodyPart.main.temp_max}} <span></span>C </h5>
 		<div class="row">
-			<div class="column">Wind Speed: {%windVal%} <stack class="perHour">/hr.</stack></div>
-			<div class="column">Humidity: {%humidityVal%}<stack class="percentage">%</stack></div>
+			<div class="column">Wind Speed: {{bodyPart.wind.speed}} <stack class="perHour">/hr.</stack></div>
+			<div class="column">Humidity: {{bodyPart.main.humidity}}<stack class="percentage">%</stack></div>
 		</div>
 		
 		<!--Waves Container-->
