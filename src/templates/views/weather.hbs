@@ -138,6 +138,8 @@ span:after {
 	font-size: 12px;
 }
 </style>
+
+{{bodyPart}}
  
 <div class="container">
 	<div class="header">
@@ -153,7 +155,7 @@ span:after {
 		</svg>
 		</div>
 		<br/>
-		<h4 class="card-title"> <i class="fa fa-map-marker" aria-hidden="true"></i>	{%cityVal%}, {%countryVal%}</h4>
+		<h4 class="card-title"> <i class="fa fa-map-marker" aria-hidden="true"></i>	{{bodyPart}}, {%countryVal%}</h4>
 		<h5 class="card-title"><i class="fas fa-temperature-low"></i> {%tempVal%} <span></span>C</h5>
 		<h6 class="card-title">Feels like {%feelsLikeVal%} <span></span>C</h6>
 		<h5 class="card-title">Min {%minVal%} <span></span>C | Max {%maxVal%} <span></span>C </h5>
