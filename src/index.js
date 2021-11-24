@@ -4,6 +4,10 @@ const path = require('path');
 const hbs = require('hbs');
 var requests = require('requests');
 
+hbs.registerHelper('visibilityDevide', function(arg1) {
+    return arg1 / 1000;
+});
+
 /* using HBS template enging  */
 const templatePath = path.join(__dirname, './templates/views');
 const partialsPath = path.join(__dirname, './templates/partials');
@@ -25,15 +29,17 @@ app.get('/about', (req, res) => {
 });
 
 app.get('/weather', (req, res) => {
-    var city = req.query.name == '/' ? 'New Delhi' : req.query.name.replace('/', '');        
+    var city = req.query.name == '/' ? 'New Delhi' : req.query.name.replace('/', '');
     requests(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=725ae9776c04b5f5511236fb804c623a&units=metric`)
-    .on('data', (response) => {
-        const jsonResponse = JSON.parse(response);
-        const arrData = [jsonResponse];
-        res.render('weather', {
-            bodyPart: arrData[0]
-        });
-    })
+        .on('data', (response) => {
+            const jsonResponse = JSON.parse(response);
+            const arrData = [jsonResponse];
+            //console.log(arrData[0].weather[0].main);
+            res.render('weather', {
+                bodyPart: arrData[0],
+                weather: arrData[0].weather[0]
+            });
+        })
     /*.on('end', (err) => {
         if (err) return console.log('connection closed due to errors', err);        
         res.end();
