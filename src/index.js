@@ -30,7 +30,7 @@ app.get('/about', (req, res) => {
 
 app.get('/weather', (req, res) => {
     var city = req.query.name == '/' ? 'New Delhi' : req.query.name.replace('/', '');
-    requests(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=725ae9776c04b5f5511236fb804c623a&units=metric`)
+    requests(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=<Your APPID>&units=metric`)
         .on('data', (response) => {
             const jsonResponse = JSON.parse(response);
             const arrData = [jsonResponse];
